@@ -1,0 +1,21 @@
+.shopping-cart {
+
+    // background-color: red;
+    // width: max-content;
+    >p{
+        // background-color: black;
+        // border: 0.5px solid black;
+        font-weight: bolder;
+        color: rgb(30, 30, 69);
+        text-align: center;
+        position: relative;
+        top: 8px;
+        right: 4px;
+        margin: 0;
+        padding: 0;
+    }
+    >svg {
+        font-size: 30px;
+        margin: 0;
+    }
+}

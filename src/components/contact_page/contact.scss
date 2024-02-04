@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+.contact-container {
+    width: 50%;
+    margin: 50px auto;
+
+
+    >form {
+        display: flex;
+        flex-direction: column;
+
+        >div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            >input {
+
+                width: 100%;
+                margin: auto;
+                height: 50px;
+                margin-bottom: 10px;
+                padding: 20px;
+
+            }
+
+            >div{
+                display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                >input{
+                padding: 0 5px;
+                font-size: small;
+                width: 100%;
+                    
+                }
+            }
+
+        }
+
+        >#submit {
+            height: 50px;
+            margin: 10px 0;
+            width: 120px;
+            padding: 0 20px;
+
+        }
+
+        >#comment {
+            height: 100px;
+            padding: 20px;
+        }
+
+
+    }
+}

@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+.big-cart-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5px;
+
+    >.cart-dt {
+        >h3{
+            width: max-content;
+            margin: auto;
+        }
+        >.cart-data-container {
+
+            border: 0.2px solid #eeefee;
+            margin: 10px;
+           
+            padding: 10px;
+
+            >.product-cart-container {
+                display: flex;
+                gap: 10px;
+
+                >.product-image {
+                    width: 30%;
+
+                }
+
+                >.product-details {
+                    >.product-price-container {
+                        display: flex;
+                        gap: 15px;
+
+                        >.temp-price {
+                            text-decoration: line-through;
+                        }
+                    }
+                }
+            }
+
+            >.delivery-date-qty-container {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 50px;
+            }
+
+            >.remove-movetofav-container {
+                display: flex;
+                margin: 10px;
+
+                >p {
+                    width: max-content;
+                    // background-color: red;
+                    margin: auto;
+                }
+            }
+        }
+
+    }
+
+    >.product-estimate-container {
+        border: 0.2px solid #eeefee;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 10px;
+        height: max-content;
+
+        >div {
+            display: flex;
+            justify-content: space-between;
+
+            >h5,
+            h6,
+            h3,
+            h4 {
+                width: fit-content;
+                font-size: small;
+                font-weight: bolder;
+            }
+        }
+
+        >.buy-product {
+
+            margin: 0 auto;
+            padding: 5px 10px;
+            background-color: greenyellow;
+            border: none;
+            border-radius: 3px;
+
+            
+                color: #797b79;
+                font-weight: bolder;
+
+            
+
+        }
+    }
+
+
+}
+
+
+@media screen and (max-width : 650px) {
+
+    .big-cart-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

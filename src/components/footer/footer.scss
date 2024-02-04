@@ -1,0 +1,40 @@
+* {
+    // margin: 0;
+    // padding: 0;
+    // text-decoration: none;
+    // box-sizing: border-box;
+}
+
+.footer {
+    padding: 10px 0;
+    background-color: rgb(174, 210, 224);
+    >footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        >div {
+            >div {
+                >p {
+                    a {
+                        text-decoration: none;
+                        color: black;
+                    }
+                }
+            }
+                >div{
+                    >form{
+                        >.email{
+                            width: 110px;
+                            font-size: 8px;
+                        }
+                        >input{
+                            padding: 10px;
+                            border: none;
+                            border-radius: 5px;
+                            margin: 5px 0;
+                        }
+                    }
+                }
+            
+        }
+    }
+}

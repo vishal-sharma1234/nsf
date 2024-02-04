@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.product-page-container {
+    text-align: center;
+
+    >.rate-filter-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        >h5 {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        >span {
+            margin: 0 5px;
+
+
+            >h6 {
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bolder;
+
+
+            }
+
+            >input {
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bolder;
+
+                height: 40px;
+                padding-left: 10px;
+                outline: none;
+                border: none;
+                border-left: 0.1px solid rgb(201, 200, 200);
+                opacity: 0.5;
+
+            }
+
+            ::placeholder {
+                opacity: 0.4;
+
+            }
+        }
+    }
+
+    >.horizontal-line {
+        width: 60vw;
+        margin: 10px auto;
+        opacity: 0.1;
+    }
+
+    >.products-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
