@@ -79,6 +79,7 @@ const Pillows = () => {
                       pImg={ele.productImg}
                       pDiscount={ele.productDiscount}
                       pId={ele._id}
+                      stars={ele.productRating}
                       pModel={ele.productModel}
                     />
                   ) : (

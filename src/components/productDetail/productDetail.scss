@@ -28,6 +28,9 @@
                 }
                 >.rating{
                     width: max-content;
+                    >span{
+                        color: yellow;
+                    }
                 }
                 >.productDiscount{
                     width: max-content;

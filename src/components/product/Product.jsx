@@ -3,12 +3,13 @@ import "./product.scss"
 import sofa from "../home/sofa.jpg";
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import StarRating from './StarRating.jsx';
 
 
 
 
 const Product = ( props ) => {
-  const {pName , pDiscount , rPrice , tPrice , pImg ,pId , pModel , pQty } = props;
+  const {pName , pDiscount , rPrice , tPrice , pImg ,pId , pModel , pQty , stars  } = props;
   const dispatch = useDispatch();
 
   const pClick = ()=>{
@@ -24,12 +25,8 @@ const Product = ( props ) => {
                 <img src={pImg} alt="image-first" />
                 <p>{pDiscount}% off</p>
                 <span className="review-stars">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star "></span>
-                  <code>4</code>
+                <StarRating stars={stars}/>
+                  {/* <code>4</code> */}
                 </span>
 
                 <small>{pName}</small>

@@ -79,6 +79,7 @@ const Living_room = () => {
                       pDiscount={ele.productDiscount}
                       pId={ele._id}
                       pModel={ele.productModel}
+                      stars={ele.productRating}
                     />
                   ) : (
                     ""

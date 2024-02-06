@@ -49,12 +49,13 @@ const Home = () => {
                         pId = {ele._id}
                         pModel = {ele.productModel}
                         pQty = {1}
-                      />
-                    );
-                  })
-              ) : (
+                        stars = {ele.productRating}
+                        />
+                        );
+                      })
+                      ) : (
                 <h1>hello</h1>
-              )}
+                )}
             </div>
           </div>
           <Link to="/new-arrivel">show more</Link>
@@ -65,23 +66,24 @@ const Home = () => {
             <div>
               {dataSet != [] ? (
                 dataSet
-                  .filter((e) => e.productModel === "bed-room")
-                  .map((ele) => {
-                    return (
-                      <Product
-                        pName={ele.productName}
-                        rPrice={ele.realPrice}
-                        tPrice={ele.tempPrice}
-                        pImg={ele.productImg}
-                        pDiscount={ele.productDiscount}
-                        pId = {ele._id}
-                        pModel = {ele.productModel}
-                      />
+                .filter((e) => e.productModel === "bed-room")
+                .map((ele) => {
+                  return (
+                    <Product
+                    pName={ele.productName}
+                    rPrice={ele.realPrice}
+                    tPrice={ele.tempPrice}
+                    pImg={ele.productImg}
+                    pDiscount={ele.productDiscount}
+                    pId = {ele._id}
+                    stars = {ele.productRating}
+                    pModel = {ele.productModel}
+                    />
                     );
                   })
-              ) : (
+                  ) : (
                 <h1>hello</h1>
-              )}
+                )}
             </div>
           </div>
           <Link to="/bed-room">show more</Link>
@@ -92,23 +94,24 @@ const Home = () => {
             <div>
               {dataSet != [] ? (
                 dataSet
-                  .filter((e) => e.productModel === "pillows")
-                  .map((ele) => {
-                    return (
-                      <Product
-                        pName={ele.productName}
-                        rPrice={ele.realPrice}
-                        tPrice={ele.tempPrice}
-                        pImg={ele.productImg}
-                        pDiscount={ele.productDiscount}
-                        pId = {ele._id}
-                        pModel = {ele.productModel}
-                      />
+                .filter((e) => e.productModel === "pillows")
+                .map((ele) => {
+                  return (
+                    <Product
+                    pName={ele.productName}
+                    rPrice={ele.realPrice}
+                    stars = {ele.productRating}
+                    tPrice={ele.tempPrice}
+                    pImg={ele.productImg}
+                    pDiscount={ele.productDiscount}
+                    pId = {ele._id}
+                    pModel = {ele.productModel}
+                    />
                     );
                   })
-              ) : (
-                <h1>hello</h1>
-              )}
+                  ) : (
+                    <h1>hello</h1>
+                    )}
             </div>
           </div>
           <Link to="/pillows">show more</Link>
@@ -119,22 +122,23 @@ const Home = () => {
             <div>
               {dataSet != [] ? (
                 dataSet
-                  .filter((e) => e.productModel === "living-room")
-                  .map((ele) => {
-                    return (
-                      <Product
-                        pName={ele.productName}
-                        rPrice={ele.realPrice}
-                        tPrice={ele.tempPrice}
-                        pImg={ele.productImg}
-                        pDiscount={ele.productDiscount}
-                        pId = {ele._id}
-                        pModel = {ele.productModel}
-                      />
+                .filter((e) => e.productModel === "living-room")
+                .map((ele) => {
+                  return (
+                    <Product
+                    pName={ele.productName}
+                    rPrice={ele.realPrice}
+                    tPrice={ele.tempPrice}
+                    stars = {ele.productRating}
+                    pImg={ele.productImg}
+                    pDiscount={ele.productDiscount}
+                    pId = {ele._id}
+                    pModel = {ele.productModel}
+                    />
                     );
                   })
-              ) : (
-                <h1>hello</h1>
+                  ) : (
+                    <h1>hello</h1>
               )}
             </div>
           </div>
@@ -146,23 +150,24 @@ const Home = () => {
             <div>
               {dataSet != [] ? (
                 dataSet
-                  .filter((e) => e.productModel === "chair")
-                  .map((ele) => {
-                    return (
-                      <Product
-                        pName={ele.productName}
-                        rPrice={ele.realPrice}
-                        tPrice={ele.tempPrice}
-                        pImg={ele.productImg}
-                        pDiscount={ele.productDiscount}
-                        pId = {ele._id}
-                        pModel = {ele.productModel}
-                      />
+                .filter((e) => e.productModel === "chair")
+                .map((ele) => {
+                  return (
+                    <Product
+                    pName={ele.productName}
+                    rPrice={ele.realPrice}
+                    tPrice={ele.tempPrice}
+                    pImg={ele.productImg}
+                    stars = {ele.productRating}
+                    pDiscount={ele.productDiscount}
+                    pId = {ele._id}
+                    pModel = {ele.productModel}
+                    />
                     );
                   })
-              ) : (
-                <h1>hello</h1>
-              )}
+                  ) : (
+                    <h1>hello</h1>
+                    )}
             </div>
           </div>
           <Link to="/chair">show more</Link>
@@ -173,3 +178,4 @@ const Home = () => {
 };
 
 export default Home;
+

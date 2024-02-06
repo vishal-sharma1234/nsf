@@ -114,7 +114,7 @@ const Product_detail = () => {
                   <img src={ele.productImg} alt="imageSofa" />
                   <div className="details">
                     <h5>{ele.productName}</h5>
-                    <p className="rating">{ele.productRating}</p>
+                    <p className="rating"><StarRating  stars={ele.productRating} /></p>
                     <p className="productSize">
                       <code>{ele.productSize}</code>
                     </p>
@@ -196,6 +196,7 @@ const Product_detail = () => {
                           pDiscount={pEle.productDiscount}
                           pId={pEle._id}
                           pModel={pEle.productModel}
+                          stars={ele.productRating}
                         />
                       </>
                     );
