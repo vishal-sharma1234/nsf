@@ -6,6 +6,7 @@ import axios from "../axios";
 import sofa from "../home/sofa.jpg";
 import Product from "../product/Product";
 import toast, { Toaster } from "react-hot-toast";
+import StarRating from "../product/StarRating";
 
 const Product_detail = () => {
   let { pQty } = useSelector((state) => state.custom);
@@ -195,8 +196,8 @@ const Product_detail = () => {
                           pImg={pEle.productImg}
                           pDiscount={pEle.productDiscount}
                           pId={pEle._id}
-                          pModel={pEle.productModel}
                           stars={ele.productRating}
+                          pModel={pEle.productModel}
                         />
                       </>
                     );

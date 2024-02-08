@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./contact.scss";
 import {  useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
   const navigate = useNavigate()
@@ -33,11 +36,13 @@ const Contact = () => {
 
     const data = await res.json();
     if(data.success){
-      alert(data.success);
+    
+      alert("User created successfully!");
       navigate("/login");
 
     }else{
-      alert(data.error)
+      // alert(data.error)
+      toast.error(data.error);
     }
 
   };
@@ -125,7 +130,9 @@ const Contact = () => {
           data-gtm-form-interact-field-id="0"
           onChange={onSet}
         ></textarea>
+
         <input id="submit" type="submit" value="Send" />
+        <ToastContainer/>
       </form>):( <h5>Welcome ! {localStorage.getItem("userEmail")} 😎</h5> )
       }
 

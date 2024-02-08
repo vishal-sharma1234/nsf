@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./cart.scss";
 import { Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+// import toast, { Toaster } from "react-hot-toast";
+import  {toast , ToastContainer } from "react-toastify";
 
 import Cartcomponent from "../cartcomponent/Cart";
 
@@ -32,7 +33,13 @@ const Cart = () => {
 
   const placeOrder = async () => {
     if (cartData.length <= 0) {
-      alert("Your cart is empty");
+      if (localStorage.getItem("userWebToken")) {
+        // alert("Your cart is empty");
+        toast.error("Your cart is empty!");
+      } else {
+        // alert("You ar'nt loggedin!, Please login.....😕");
+        toast.error("You ar'nt loggedin!, Please login.....😕!");
+      }
     } else {
       const res = await fetch("http://localhost:5000/api/v1/placeorder", {
         method: "POST",
@@ -48,10 +55,11 @@ const Cart = () => {
       const resJson = await res.json();
       // console.log(resJson);
 
+      
       toast.success(
         "Order pandding after payment successfull then your order condfirmed!"
       );
-
+      localStorage.setItem("cartLength", 0);
       window.location.reload();
     }
   };
@@ -62,7 +70,7 @@ const Cart = () => {
 
   return (
     <div className="big-cart-container">
-      <Toaster />
+      
       <div className="cart-dt">
         {localStorage.getItem("userWebToken") ? (
           cartData.length > 0 ? (
@@ -114,6 +122,7 @@ const Cart = () => {
           Buy now
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -5,45 +5,60 @@ const orderModel = require("../models/orderModel");
 const sendEmailModel = require("../models/sendEmailModel");
 const jwt = require("jsonwebtoken");
 const secretKey = "thisismyproject";
-
-
+const bycrypt = require("bcryptjs");
 
 // Send Email
 
-exports.sendEmail = async (req,res,next)=>{
+exports.sendEmail = async (req, res, next) => {
+  const { email } = req.body;
+  // console.log(email);
+  const findEmail = await sendEmailModel.findOne({ email: email });
 
-  const {email} = req.body;
-    // console.log(email);
-  const findEmail = await sendEmailModel.findOne({email : email});
-
-  if(findEmail){
+  if (findEmail) {
     res.status(202).json({
-      success : false,
-      message : "Email is already added!",
-    })
-  }else{
+      success: false,
+      message: "Email is already added!",
+    });
+  } else {
     const data = await sendEmailModel.create(req.body);
-  res.status(202).json({
-    success : true,
-    data
-  })
-  }
-
-
- 
-}
-
-
-// sign up user
-
-exports.createUser = async (req, res, next) => {
-  let { password, cPassword } = req.body;
-  if (password === cPassword) {
-    let data = await userModel.create(req.body);
     res.status(202).json({
       success: true,
       data,
     });
+  }
+};
+
+// sign up user
+
+exports.createUser = async (req, res, next) => {
+  let { password, cPassword, email } = req.body;
+  if (password === cPassword) {
+    const oldUser = await userModel.findOne({ email: email });
+    // console.log(oldUser);
+    if (!oldUser) {
+
+      const salt = await bycrypt.genSalt(10);
+      const hashPass = await bycrypt.hash(password , salt);
+      // console.log(pass);
+
+      let data = await userModel.create({
+        name : req.body.name,
+        email : req.body.email,
+        password : hashPass,
+        cPassword : hashPass,
+        contact : req.body.contact,
+        address : req.body.address
+      });
+      res.status(202).json({
+        success: true,
+        data,
+      });
+    }else{
+      res.status(404).json({
+        success : false,
+        error : "User already created on this email address!"
+      })
+    }
   } else {
     res.status(404).json({
       success: false,
@@ -60,7 +75,10 @@ exports.loginUser = async (req, res, next) => {
   const userObj = user[0];
   // console.log(userObj);
   if (userObj) {
-    if (password === userObj.password) {
+  
+
+    let comPass = await bycrypt.compare(password , userObj.password )
+    if (comPass) {
       let userId = {
         id: userObj._id,
       };
@@ -68,18 +86,18 @@ exports.loginUser = async (req, res, next) => {
       let userEmail = userObj.email;
       let userType = userObj.userType;
 
-      let cartLength = await cartModel.find({user : userEmail});
+      let cartLength = await cartModel.find({ user: userEmail });
       let length = cartLength.length;
       // console.log(length);
 
-      let userWebToken = jwt.sign(userId, secretKey  );
+      let userWebToken = jwt.sign(userId, secretKey);
       res.status(202).json({
         success: true,
         userObj,
         userWebToken,
         userEmail,
         userType,
-        length
+        length,
       });
     } else {
       res.status(404).json({
@@ -109,39 +127,35 @@ exports.addToCart = async (req, res, next) => {
   const { productId, user } = req.body;
   const query = {
     productId: productId,
-    user : user
-  }
+    user: user,
+  };
   const findData = await cartModel.findOne({
     productId: productId,
     user: user,
   });
 
-
   // console.log(findData);
-  let cartLength = await cartModel.find({user : user});
+  let cartLength = await cartModel.find({ user: user });
   let length = cartLength.length;
 
   if (!findData) {
     let data = await cartModel.create(req.body);
 
-    
     // console.log(length);
 
     res.status(202).json({
       success: true,
       data,
-      length
+      length,
     });
-  }else{
-    const newData = await cartModel.findOneAndUpdate(query, { $set: req.body})
+  } else {
+    const newData = await cartModel.findOneAndUpdate(query, { $set: req.body });
     res.status(202).json({
       message: "update",
       newData,
-      length
+      length,
     });
   }
-
-
 };
 
 // cart data find get API
@@ -180,25 +194,19 @@ exports.displayData = async (req, res, next) => {
   }
 };
 
-
-
 //  O R D E R    C O N F I R M
 
-exports.placeOrder = async (req,res,next)=>{
-
-  const {user , orderArrayOfProduct , subTotalPayment}  = req.body;
+exports.placeOrder = async (req, res, next) => {
+  const { user, orderArrayOfProduct, subTotalPayment } = req.body;
   // console.log(user);
-  
-  const data = await orderModel.create(req.body);
-  
 
-  const deleDt = await cartModel.deleteMany({user : user});
+  const data = await orderModel.create(req.body);
+
+  const deleDt = await cartModel.deleteMany({ user: user });
 
   res.status(202).json({
-    success : true,
+    success: true,
     data,
     deleDt,
-  })
-
-
-}
+  });
+};

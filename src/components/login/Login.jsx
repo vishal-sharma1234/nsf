@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
-import toast,{ Toaster } from "react-hot-toast";
+import {toast,ToastContainer} from "react-toastify";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <div className="login-page-container">
-      <Toaster/>
+      <ToastContainer/>
       <form action="" className="login-form" onSubmit={handleSubmit}>
         <h6>Login...</h6>
         <input
